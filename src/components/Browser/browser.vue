@@ -78,17 +78,16 @@ export default{
   }
 }
 </script>
-<style lang="scss">
+<style>
   .browser{
     width: 100%;
     height: 100%;
     background-color: #fff;
-
-    .resultIframe {
-      width: 100%;
-      height: calc(100% - 40px);
-      overflow: auto;
-      background: #fff;
-    }
+  }
+  .resultIframe {
+    width: 100%;
+    height: calc(100% - 40px);
+    overflow: auto;
+    background: #fff;
   }
 </style>

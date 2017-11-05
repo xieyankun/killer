@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <textarea ref="codeEditor"></textarea>
 </template>
 
@@ -82,3 +82,4 @@ export default{
   }
 }
 </script>
+ -->
