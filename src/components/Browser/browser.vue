@@ -43,6 +43,11 @@ export default{
       isHand: true
     }
   },
+  watch: {
+    options: function () {
+      this.compileWeb()
+    }
+  },
   methods: {
     showQuickFile () {
     },
