@@ -1,31 +1,36 @@
 <template>
-  <div class="anchor">
-    <drag>       
-      <div class="work" slot='uLeft'>
+  <div class="ide">
+    <div class="tree-wrap">
+    </div> 
+    <div class="editor-wrap">
+      <editor></editor>
+    </div>
+    <div class="browser-wrap">
+      <div class="view">
+        <browser :options="browserData"></browser>
       </div>
-      <div class="work" slot='dLeft'>
-      </div>
-      <div class="work" slot='uRight'>
-      </div>
-      <div class="work" slot='dRight'>
-      </div>
-    </drag>
+      <div class="console"></div>
+    </div>
   </div>
 </template>
 
 <script>
 /* eslint-disable */
-import Drag from '@/base/Drag'
+// import Tree from '@/components/Tree/tree'
 import Editor from '@/components/Editor/editor'
+import Browser from '@/components/Browser/browser'
 export default {
   components: {
-    Drag,
-    Editor
+    Editor,
+    Browser
   },
   data () {
     return {
       optionData: {
         layout: 'u-d'
+      },
+      browserData: {
+        html: 'Hello world'
       }
     }
   },
@@ -40,24 +45,18 @@ export default {
 }
 </script>
 
-<style>
-  .anchor{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    overflow: hidden;
-  }
-  .dragWrap{
-    position: relative;
-    width: 100%;
-    height: calc(100% - 48px);
-    overflow: hidden;
-  }
-  .editor, .iterm-wrap{
-    width: 100%;
-    height: 100%;
-  }
-  .work{
-    background-color: #999 !important;
-  }
+<style lang="stylus">
+.ide
+  width: 100%
+  height: 100%
+  position: absolute
+  overflow: hidden
+  background-color: #e0e3e4
+  display: flex
+  .tree-wrap
+    width: 240px
+  .editor-wrap
+    flex: 1
+  .browser-wrap
+    width: 320px;
 </style>

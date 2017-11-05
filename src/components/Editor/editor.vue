@@ -1,11 +1,12 @@
-<!-- <template>
+<template>
   <textarea ref="codeEditor"></textarea>
 </template>
 
 <script>
+/* eslint-disable */
 import CodeMirror from 'codemirror'
 import 'codemirror/lib/codemirror.css'
-import '@/utils/minEmmet'
+import '@/common/js/minEmmet'
 import 'codemirror/mode/htmlmixed/htmlmixed'
 import 'codemirror/mode/clike/clike'
 import 'codemirror/mode/python/python'
@@ -13,7 +14,6 @@ import 'codemirror/addon/hint/show-hint'
 import 'codemirror/addon/hint/html-hint'
 import 'codemirror/addon/hint/show-hint.css'
 import 'codemirror/theme/base16-dark.css'
-import { getMode } from '@/common/js/utils'
 export default{
   components: {
   },
@@ -51,28 +51,15 @@ export default{
     }
   },
   created() {
-    this.config.mode = getMode(this.languageId)
   },
   mounted() {
     this.initEditor()
-    console.log(this.options)
   },
   methods: {
     initEditor () {
-      let _this = this
-      if (!this.options.isWrite) {
-        this.config.readOnly = true
-      }
       this.editor = CodeMirror.fromTextArea(this.$refs.codeEditor, this.config)
       this.editor.on('change', (instance, changeObj) => {
-        console.log(_this.isLive)
-        // 可编辑的时候
-        if (this.options.isWrite) {
-          this.$store.commit('addAction', instance.getValue())
-        }
-        if (this.isLive) {
-          this.socket.emit('action.code', changeObj, this.roomId, instance.getValue())
-        }
+        console.log(changeObj)
       })
     },
     clearContent: function() {
@@ -82,4 +69,3 @@ export default{
   }
 }
 </script>
- -->

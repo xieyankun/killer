@@ -8,7 +8,7 @@
             <a href="javascript:;">{{item.library}}</a>
           </li>
         </ul>                 
-      </div>     
+      </div>   
       <div class="iterm-r web-iterm">
         <i class="icon iconfont icon-qiehuan" @click.stop="checkHand"></i>
         <a href="javascript:;" v-if="isHand" @click.stop="compileWeb">点击运行</a>
@@ -20,10 +20,9 @@
 </template>
 
 <script>
-import { showWebView } from '@/utils/utils'
+import { showWebView } from '@/common/js/utils'
 export default{
   props: {
-    code: String,
     options: {
       type: Object,
       default: function() {
@@ -44,36 +43,19 @@ export default{
       isHand: true
     }
   },
-  watch: {
-    code: function () {
-      if (this.isHand === false) {
-        this.compileWeb()
-      }
-    }
-  },
   methods: {
     showQuickFile () {
     },
     quickTool (index) {
-      console.log('index:', index)
-      this.quickFile = false
-      this.$emit('insertCodeSnippet', index)
     },
     checkHand() {
       this.isHand = !this.isHand
-      if (this.options.role === 0) {
-        this.socket.emit('check.handle.run', this.isHand, this.$route.params.roomId)
-      }
     },
     compileWeb() {
-      console.log(this.code)
-      console.log(this.isHand)
+      console.log(this.options.html)
       let iframeWrap = this.$refs.webConsole
-      let code = this.code
-      showWebView(iframeWrap, code)
-      if (this.options.role === 0) {
-        this.socket.emit('handle.run', 'code', this.$route.params.roomId)
-      }
+      let html = this.options.html
+      showWebView(iframeWrap, html)
     }
   }
 }
@@ -82,12 +64,10 @@ export default{
   .browser{
     width: 100%;
     height: 100%;
-    background-color: #fff;
   }
   .resultIframe {
     width: 100%;
     height: calc(100% - 40px);
     overflow: auto;
-    background: #fff;
   }
 </style>

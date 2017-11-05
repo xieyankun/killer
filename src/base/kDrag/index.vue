@@ -202,7 +202,6 @@
 .item{
   width: 50%;
   box-sizing: border-box;
-  // border: 1px solid red;
   float: left;
 }
 .item-top{
