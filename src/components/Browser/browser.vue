@@ -40,13 +40,14 @@ export default{
         {library: 'code基本结构'}
       ],
       quickFile: false,
-      isHand: true
+      isHand: true   // 是否手动运行 true：手动运行，false：自动运行
     }
   },
   watch: {
     options: function () {
-      console.log(this.options)
-      this.compileWeb()
+      if (!this.isHand) {
+        this.compileWeb()
+      }
     }
   },
   methods: {

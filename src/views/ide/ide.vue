@@ -26,9 +26,6 @@ export default {
   },
   data () {
     return {
-      optionData: {
-        layout: 'u-d'
-      }
     }
   },
   created () {
@@ -40,7 +37,6 @@ export default {
       let data = {
         code: this.$store.state.fileData.code
       }
-      console.log(data)
       return data
     }
   },
