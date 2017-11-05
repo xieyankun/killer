@@ -26,7 +26,7 @@ export default{
     options: {
       type: Object,
       default: function() {
-        return {role: 0, html: ''}
+        return {role: 0, code: ''}
       }
     }
   },
@@ -37,7 +37,7 @@ export default{
         {library: 'jQuery.js'},
         {library: 'Bootstrap.js'},
         {library: 'Bootstrap.css'},
-        {library: 'HTML基本结构'}
+        {library: 'code基本结构'}
       ],
       quickFile: false,
       isHand: true
@@ -52,10 +52,10 @@ export default{
       this.isHand = !this.isHand
     },
     compileWeb() {
-      console.log(this.options.html)
+      console.log(this.options.code)
       let iframeWrap = this.$refs.webConsole
-      let html = this.options.html
-      showWebView(iframeWrap, html)
+      let code = this.options.code
+      showWebView(iframeWrap, code)
     }
   }
 }

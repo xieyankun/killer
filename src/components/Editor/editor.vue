@@ -60,6 +60,8 @@ export default{
       this.editor = CodeMirror.fromTextArea(this.$refs.codeEditor, this.config)
       this.editor.on('change', (instance, changeObj) => {
         console.log(changeObj)
+        console.log(this.$store.state.fileData)
+        this.$store.commit('addAction', instance.getValue())
       })
     },
     clearContent: function() {

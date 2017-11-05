@@ -1,19 +1,37 @@
-// 获取editor内容
-export let loadFile = () => {
-  let dataStr = localStorage.getItem('editorContent')
+const FILE_KEY = 'FILE'
+
+const initFileData = {
+  name: '项目文件',
+  code: '',
+  children: []
+}
+
+// 获取文件
+export let loadFileData = function () {
+  let fileDataStr = localStorage.getItem(FILE_KEY)
   try {
-    return dataStr
+    return JSON.parse(fileDataStr) || initFileData
   } catch (e) {
-    localStorage.setItem('editorContent', '')
-    return dataStr
+    console.error(e)
+    return initFileData
   }
 }
 
+let saveLocalData = function (key, data) {
+  localStorage.setItem(key, JSON.stringify(data))
+}
+
 // 添加代码
-export let addCode = (code) => {
-  let data = code
-  localStorage.setItem('editorContent', data)
-  return data
+export let addCode = function (code) {
+  let fileData = loadFileData()
+
+  fileData.code = code
+
+  console.log(fileData)
+
+  saveLocalData(FILE_KEY, fileData)
+
+  return fileData
 }
 
 export let clearCode = () => {

@@ -28,9 +28,6 @@ export default {
     return {
       optionData: {
         layout: 'u-d'
-      },
-      browserData: {
-        html: 'Hello world'
       }
     }
   },
@@ -39,6 +36,9 @@ export default {
   mounted () {
   },
   computed: {
+    browserData: function() {
+      return this.$store.state.fileData.code
+    }
   },
   methods: {
   }
