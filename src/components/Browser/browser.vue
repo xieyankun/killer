@@ -45,6 +45,7 @@ export default{
   },
   watch: {
     options: function () {
+      console.log(this.options)
       this.compileWeb()
     }
   },

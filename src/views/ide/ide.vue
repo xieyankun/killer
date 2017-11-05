@@ -37,7 +37,11 @@ export default {
   },
   computed: {
     browserData: function() {
-      return this.$store.state.fileData.code
+      let data = {
+        code: this.$store.state.fileData.code
+      }
+      console.log(data)
+      return data
     }
   },
   methods: {
