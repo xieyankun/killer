@@ -1,20 +1,5 @@
 <template>
   <div class="browser">
-    <div class="web-menu">
-      <div class="iterm-l web-iterm quickTool" @click.stop.prevent="quickFile=!quickFile">
-        快速引入文件
-        <ul class="drop-down-content" v-show="quickFile">
-          <li v-for="(item, index) in items" @click.stop.prevent="quickTool(index)">
-            <a href="javascript:;">{{item.library}}</a>
-          </li>
-        </ul>                 
-      </div>   
-      <div class="iterm-r web-iterm">
-        <i class="icon iconfont icon-qiehuan" @click.stop="checkHand"></i>
-        <a href="javascript:;" v-if="isHand" @click.stop="compileWeb">点击运行</a>
-        <a href="javascript:;" v-else>自动运行</a>
-      </div>   
-    </div>
     <iframe class="resultIframe" frameBorder="0" ref="webConsole"></iframe>
   </div>
 </template>
