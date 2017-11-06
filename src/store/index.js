@@ -8,7 +8,8 @@ import { loadFileData } from './mutation-types'
 Vue.use(Vuex)
 
 const state = {
-  fileData: loadFileData()
+  fileData: loadFileData(),
+  compile: false
 }
 
 export default new Vuex.Store({

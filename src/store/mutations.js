@@ -6,5 +6,8 @@ export default {
   },
   clearAction(state) {
     state.editorContent = clearCode()
+  },
+  isCompile(state) {
+    // state.compile = !state.compile
   }
 }

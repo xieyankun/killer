@@ -1,26 +1,33 @@
 <template>
-  <div class="ide">
-    <div class="tree-wrap">
-    </div> 
-    <div class="editor-wrap">
-      <editor></editor>
-    </div>
-    <div class="browser-wrap">
-      <div class="view">
-        <browser :options="browserData"></browser>
+  <div class="">
+    <header>
+      <tool-box></tool-box>
+    </header>
+    <section class="ide">
+      <div class="tree-wrap">
+      </div> 
+      <div class="editor-wrap">
+        <editor></editor>
       </div>
-      <div class="console"></div>
-    </div>
+      <div class="browser-wrap">
+        <div class="view">
+          <browser :options="browserData"></browser>
+        </div>
+        <div class="console"></div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
 /* eslint-disable */
 // import Tree from '@/components/Tree/tree'
+import ToolBox from '@/components/Toolbox/toolbox'
 import Editor from '@/components/Editor/editor'
 import Browser from '@/components/Browser/browser'
 export default {
   components: {
+    ToolBox,
     Editor,
     Browser
   },
@@ -48,7 +55,7 @@ export default {
 <style lang="stylus">
 .ide
   width: 100%
-  height: 100%
+  height: calc(100% - 36px)
   position: absolute
   overflow: hidden
   background-color: #e0e3e4

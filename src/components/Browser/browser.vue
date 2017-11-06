@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import EventBus from '@/components/EventBus'
 import { showWebView } from '@/common/js/utils'
 export default{
   props: {
@@ -48,7 +49,22 @@ export default{
       if (!this.isHand) {
         this.compileWeb()
       }
+    },
+    iscompile: function() {
     }
+  },
+  computed: {
+    iscompile: function() {
+      return this.$store.state.compile
+    }
+  },
+  created () {
+  },
+  mounted () {
+    EventBus.$on('isCompile', () => {
+      console.log('8888')
+      this.compileWeb()
+    })
   },
   methods: {
     showQuickFile () {
