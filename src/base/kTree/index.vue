@@ -1,6 +1,6 @@
 <template>
   <li>
-    <div :class="{bold: isFolder}" @click="toggle(model)" @dblclick="changeType">
+    <div :class="{bold: isFolder}" @click="toggle(model)">
       <span v-if="isFolder > 1">
         <i v-if="open" class="icon iconfont icon-wenjian1"></i>
         <i v-else class="icon iconfont icon-folder"></i>
@@ -13,8 +13,6 @@
     </div>
 
     <ul v-show="open" v-if="isFolder">
-      <item class="item" v-for="model in model.children" :model="model">
-      </item>
       <li class="add" @click="addChild">+</li>
     </ul>
   </li>
@@ -46,7 +44,8 @@
     },
     methods: {
       toggle: function (model) {
-        console.log('model', model)
+        // console.log('model', model)
+        this.$emit('toggle', model)
         if (this.isFolder) {
           this.open = !this.open
         }

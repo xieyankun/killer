@@ -1,10 +1,8 @@
-<!-- <template>
+<template>
   <div class="treeWrap">
     <p>目录</p>
     <ul class="tree">
-      <item
-        class="item"
-        :model="treeData">
+      <item class="item" v-for="item in treeData" :model="item" @toggle="selectItem">
       </item>
     </ul>
   </div>
@@ -20,25 +18,22 @@ export default {
   },
   data() {
     return {
-      treeData: {
-        name: '目录',
-        children: [
-          {name: '目录111'},
-          {
-            name: '目录一',
-            children: [
-              {name: '目录一'},
-              {name: '目录二'}
-            ]
-          },
-          {name: '目录二'}
-        ]
-      }
+      treeData: this.$store.state.fileData
     }
   },
+  computed: {
+    // treeData: function(){
+    //   return this.$store.state.fileData
+    // }
+  },
   mounted () {
+    console.log(this.$store.state.fileData)
   },
   methods: {
+    selectItem(item) {
+      console.log(item)
+
+    }
   }
 }
 </script>
@@ -60,4 +55,3 @@ ul {
   list-style-type: dot;
 }
 </style>
- -->

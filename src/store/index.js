@@ -9,7 +9,8 @@ Vue.use(Vuex)
 
 const state = {
   fileData: loadFileData(),
-  compile: false
+  compile: false,
+  toggleFile: 0
 }
 
 export default new Vuex.Store({

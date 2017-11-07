@@ -34,6 +34,6 @@ export default{
   height: 36px;
   line-height: 36px;
   background-color: #053140
-  text-align: right;
+  // text-align: right;
   color: #fff;
 </style>

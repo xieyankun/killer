@@ -50,6 +50,11 @@ export default{
       codeContent: ''
     }
   },
+  computed: {
+    toggleFile: function() {
+      return this.$store.state.toggleFile
+    }
+  },
   created() {
   },
   mounted() {
@@ -59,10 +64,20 @@ export default{
     initEditor () {
       this.editor = CodeMirror.fromTextArea(this.$refs.codeEditor, this.config)
       this.editor.on('change', (instance, changeObj) => {
-        console.log(changeObj)
-        console.log(this.$store.state.fileData)
-        this.$store.commit('addAction', instance.getValue())
+        // console.log(instance.doc.redo)
+        // console.log(this.$store.state.fileData)
+        // this.editor.redo()
+        console.log(this.$store.state.toggleFile)
+        let data = {
+          index: this.$store.state.toggleFile,
+          code: instance.getValue()
+        }
+        this.$store.commit('addAction', data)
       })
+      this.editor.on('redo', (instance, changeObj) => {
+        console.log('redo', instance)
+      })
+      // this.editor.redo()
     },
     clearContent: function() {
     }

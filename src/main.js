@@ -6,6 +6,10 @@ import router from './router'
 import store from './store/index'
 import './common/fonts/iconfont.css'
 import './common/stylus/index.styl'
+import { ZTree } from 'vue2-lazy-tree'
+import './../node_modules/vue2-lazy-tree/dist/vue2-tree.min.css'
+
+Vue.use(ZTree)
 
 Vue.config.productionTip = false
 

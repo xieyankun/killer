@@ -5,6 +5,7 @@
     </header>
     <section class="ide">
       <div class="tree-wrap">
+        <tree></tree>
       </div> 
       <div class="editor-wrap">
         <editor></editor>
@@ -21,13 +22,14 @@
 
 <script>
 /* eslint-disable */
-// import Tree from '@/components/Tree/tree'
 import ToolBox from '@/components/Toolbox/toolbox'
+import Tree from '@/components/Tree/tree'
 import Editor from '@/components/Editor/editor'
 import Browser from '@/components/Browser/browser'
 export default {
   components: {
     ToolBox,
+    Tree,
     Editor,
     Browser
   },

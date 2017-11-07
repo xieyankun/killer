@@ -1,10 +1,12 @@
 const FILE_KEY = 'FILE'
 
-const initFileData = {
-  name: '项目文件',
-  code: '',
-  children: []
-}
+const initFileData = [
+  {
+    name: '项目文件',
+    code: '',
+    children: []
+  }
+]
 
 // 获取文件
 export let loadFileData = function () {
@@ -22,15 +24,12 @@ let saveLocalData = function (key, data) {
 }
 
 // 添加代码
-export let addCode = function (code) {
+export let addCode = function (data) {
   let fileData = loadFileData()
-
-  fileData.code = code
-
+  let {index, code} = data
+  fileData[index].code = code
   console.log(fileData)
-
   saveLocalData(FILE_KEY, fileData)
-
   return fileData
 }
 

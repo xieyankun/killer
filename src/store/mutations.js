@@ -1,8 +1,8 @@
 import {addCode, clearCode} from './mutation-types'
 export default {
-  addAction(state, code) {
-    console.log('action', code)
-    state.fileData = addCode(code)
+  addAction(state, data) {
+    console.log('data', data)
+    state.fileData = addCode(data)
   },
   clearAction(state) {
     state.editorContent = clearCode()
