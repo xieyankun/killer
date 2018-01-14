@@ -3,11 +3,14 @@
     <i class="icon iconfont icon-qiehuan" @click.stop="checkHand"></i>
     <a href="javascript:;" v-if="isHand" @click.stop="compileWeb">点击运行</a>
     <a href="javascript:;" v-else>自动运行</a>
+    <a href="javascript:;" @click="addToCart()">添加</a>
   </div>
 </template>
 
 <script>
+/* eslint-disable */ 
 import EventBus from '@/components/EventBus'
+import { mapGetters, mapActions } from 'vuex'
 export default{
   props: {
   },
@@ -18,14 +21,18 @@ export default{
   },
   watch: {
   },
-  methods: {
-    checkHand() {
-      this.isHand = !this.isHand
-    },
-    compileWeb() {
-      EventBus.$emit('isCompile')
-    }
-  }
+  methods: mapActions([
+    'addToCart'
+  ]),
+  //   checkHand() {
+  //     this.isHand = !this.isHand
+  //     console.log(this.$store.state.toolbox.tool)
+  //     this.$store.commit('compile')
+  //   },
+  //   compileWeb() {
+  //     EventBus.$emit('isCompile')
+  //   }
+  // }
 }
 </script>
 <style lang="stylus">

@@ -9,5 +9,9 @@ export default {
   },
   isCompile(state) {
     // state.compile = !state.compile
+  },
+  toggleFile(state, index) {
+    console.log('index', index)
+    state.toggleFile = index
   }
 }

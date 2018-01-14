@@ -14,6 +14,7 @@ import 'codemirror/addon/hint/show-hint'
 import 'codemirror/addon/hint/html-hint'
 import 'codemirror/addon/hint/show-hint.css'
 import 'codemirror/theme/base16-dark.css'
+import EventBus from '@/components/EventBus'
 export default{
   components: {
   },
@@ -55,10 +56,20 @@ export default{
       return this.$store.state.toggleFile
     }
   },
+  watch: {
+    toggleFile: function() {
+      console.log('----')
+    }
+  },
   created() {
   },
   mounted() {
     this.initEditor()
+    EventBus.$on('toggleFile', (index) => {
+      let code = this.$store.state.fileData[index]
+      console.log('----', index, code)
+      this.editor.setValue(code)
+    })
   },
   methods: {
     initEditor () {

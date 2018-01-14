@@ -6,7 +6,22 @@ import Ide from '@/views/ide/ide'
 
 Vue.use(Router)
 
-export default new Router({
+// export default new Router({
+//   routes: [
+//     {
+//       path: '/',
+//       name: 'Hello',
+//       component: HelloWorld
+//     },
+//     {
+//       path: '/ide/:langId',
+//       name: 'Ide',
+//       component: Ide
+//     }
+//   ]
+// })
+
+const routerBase = {
   routes: [
     {
       path: '/',
@@ -18,10 +33,9 @@ export default new Router({
       name: 'Ide',
       component: Ide
     }
-    // {
-    //   path: '/tree',
-    //   name: 'Tree',
-    //   component: Tree
-    // }
   ]
-})
+}
+
+const router = new Router(routerBase)
+
+export default router

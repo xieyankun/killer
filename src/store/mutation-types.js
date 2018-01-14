@@ -1,9 +1,17 @@
+export const ADD_TO_CART = 'ADD_TO_CART'
+export const COMPILE = 'COMPILE'
+
 const FILE_KEY = 'FILE'
 
 const initFileData = [
   {
-    name: '项目文件',
-    code: '',
+    name: '文件一',
+    code: 'A',
+    children: []
+  },
+  {
+    name: '文件二',
+    code: 'B',
     children: []
   }
 ]

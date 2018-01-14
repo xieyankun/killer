@@ -21,7 +21,8 @@
 <script>
   export default{
     props: {
-      model: Object
+      model: Object,
+      indexData: Number
     },
     data() {
       return {
@@ -45,7 +46,7 @@
     methods: {
       toggle: function (model) {
         // console.log('model', model)
-        this.$emit('toggle', model)
+        this.$emit('toggle', model, this.indexData)
         if (this.isFolder) {
           this.open = !this.open
         }

@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import mutations from './mutations'
 import actions from './action'
 import getters from './getters'
+import toolbox from './modules/toolbox'
 import { loadFileData } from './mutation-types'
 
 Vue.use(Vuex)
@@ -16,6 +17,9 @@ const state = {
 export default new Vuex.Store({
   state,
   getters,
+  modules: {
+    toolbox
+  },
   actions,
   mutations
 })
