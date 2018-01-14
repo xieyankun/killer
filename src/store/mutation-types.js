@@ -5,6 +5,11 @@ const FILE_KEY = 'FILE'
 
 const initFileData = [
   {
+    name: 'index.html',
+    code: 'BBBBBBBB',
+    children: []
+  },
+  {
     name: '文件一',
     code: 'A',
     children: []

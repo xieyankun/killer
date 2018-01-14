@@ -74,17 +74,24 @@ export default{
   methods: {
     initEditor () {
       this.editor = CodeMirror.fromTextArea(this.$refs.codeEditor, this.config)
+
       this.editor.on('change', (instance, changeObj) => {
         // console.log(instance.doc.redo)
         // console.log(this.$store.state.fileData)
         // this.editor.redo()
         console.log(this.$store.state.toggleFile)
+        console.log(this.$store.state)
+
         let data = {
           index: this.$store.state.toggleFile,
           code: instance.getValue()
         }
+
         this.$store.commit('addAction', data)
       })
+      // 初始化编辑器内容
+      this.editor.setValue(this.$store.state.fileData[0].code)
+
       this.editor.on('redo', (instance, changeObj) => {
         console.log('redo', instance)
       })
