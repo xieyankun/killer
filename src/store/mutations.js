@@ -1,4 +1,4 @@
-import {addCode, clearCode} from './mutation-types'
+import {addCode, clearCode} from '@/common/js/editorStore'
 export default {
   addAction(state, data) {
     console.log('data', data)
@@ -10,8 +10,8 @@ export default {
   isCompile(state) {
     // state.compile = !state.compile
   },
-  toggleFile(state, index) {
-    console.log('index', index)
-    state.toggleFile = index
+  toggleFile(state, data) {
+    state.selectFileCode = data.data.code
+    state.toggleFile = data.index
   }
 }

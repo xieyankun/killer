@@ -8,11 +8,11 @@
         <tree></tree>
       </div> 
       <div class="editor-wrap">
-        <editor></editor>
+        <editor ref="myEditor" :options="editorData" :editorContent='selectFileCode'></editor>
       </div>
       <div class="browser-wrap">
         <div class="view">
-          <browser :options="browserData"></browser>
+          <!-- <browser :options="browserData"></browser> -->
         </div>
         <div class="console"></div>
       </div>
@@ -35,22 +35,36 @@ export default {
   },
   data () {
     return {
+      editorData: {
+        autofocus: true,
+        lineNumbers: true,
+        matchBrackets: true,
+        autoCloseBrackets: true,
+        tabSize: 4,
+        mode: 'text/html',
+        line: true
+      }
     }
   },
   created () {
   },
   mounted () {
+    // console.log('this.myEditor', this.myEditor)
+  },
+  watch: {
   },
   computed: {
-    browserData: function() {
-      let data = {
-        code: this.$store.state.fileData.code
-      }
-      return data
+    myEditor() {
+      return this.$refs.myEditor.editor
+    },
+    selectFileCode() {
+      let code = this.$store.state.selectFileCode
+      return code
     }
   },
   methods: {
-  }
+  },
+
 }
 </script>
 

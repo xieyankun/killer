@@ -25,28 +25,29 @@ export default {
   },
   data() {
     return {
-      n: 0,
-      treeData: this.$store.state.fileData
+      n: 0
     }
   },
   computed: {
-    // treeData: function(){
-    //   return this.$store.state.fileData
-    // }
   },
   mounted () {
-    console.log(this.$store.state.fileData)
+  },
+  computed: {
+    treeData: function() {
+      return this.$store.state.fileData
+    }
   },
   methods: {
     toggleMenu(item, index) {
       console.log(index, item)
+      let data = {
+        index: index,
+        data: item
+      }
       this.n = index
-      this.$store.commit('toggleFile', index)
-    },
-    selectItem(item, index) {
-      console.log(item, index)
-      // this.$store.commit('toggleFile', index)
-      // EventBus.$emit('toggleFile', index)
+      console.log(data)
+      // debugger
+      this.$store.commit('toggleFile', data)
     }
   }
 }

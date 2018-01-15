@@ -29,65 +29,64 @@ export default{
       type: Object,
       default: function() {
         return {
-          isLive: false,
-          isWrite: true
+          autofocus: true,
+          lineNumbers: true,
+          matchBrackets: true,
+          autoCloseBrackets: true,
+          tabSize: 4,
+          mode: 'text/html',
+          line: true
         }
       }
-    }
+    },
+    editorContent: {
+      type: String,
+      default: function() {
+        return ''
+      }
+    },
   },
   data() {
     return {
       roomId: this.$route.params.roomId,
       languageId: this.$route.params.languageId,
-      config: {
-        autofocus: true,
-        lineNumbers: true,
-        matchBrackets: true,
-        autoCloseBrackets: true,
-        tabSize: 4,
-        mode: 'text/html',
-        line: true
-      },
       codeContent: ''
     }
   },
   computed: {
     toggleFile: function() {
       return this.$store.state.toggleFile
-    }
+    },
+    // selectFileCode: function() {
+    //   let code = this.$store.state.selectFileCode
+    //   this.editor.setValue(code)
+    //   console.log('code,--', code)
+    //   return code
+    // }
   },
   watch: {
-    toggleFile: function() {
-      console.log('----')
+    editorContent() {
+      this.editor.setValue(this.editorContent)
+    },
+    toggleFile() {
     }
   },
   created() {
   },
   mounted() {
     this.initEditor()
-    EventBus.$on('toggleFile', (index) => {
-      let code = this.$store.state.fileData[index]
-      console.log('----', index, code)
-      this.editor.setValue(code)
-    })
   },
   methods: {
     initEditor () {
-      this.editor = CodeMirror.fromTextArea(this.$refs.codeEditor, this.config)
+      this.editor = CodeMirror.fromTextArea(this.$refs.codeEditor, this.options)
 
       this.editor.on('change', (instance, changeObj) => {
-        // console.log(instance.doc.redo)
-        // console.log(this.$store.state.fileData)
-        // this.editor.redo()
-        console.log(this.$store.state.toggleFile)
-        console.log(this.$store.state)
-
         let data = {
           index: this.$store.state.toggleFile,
           code: instance.getValue()
         }
-
         this.$store.commit('addAction', data)
+        console.log(this.$store.state.toggleFile)
       })
       // 初始化编辑器内容
       this.editor.setValue(this.$store.state.fileData[0].code)
