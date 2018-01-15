@@ -34,20 +34,21 @@ export default {
   },
   computed: {
     treeData: function() {
-      return this.$store.state.fileData
+      return this.$store.state.allFileData
     }
   },
   methods: {
     toggleMenu(item, index) {
-      console.log(index, item)
       let data = {
         index: index,
-        data: item
       }
+      // fileType: item.name.split('.').splice(-1)[0],
+      // 当前操作的文件
+      let optionFileData = Object.assign(data, item)
+      // console.log('optionFileData', optionFileData)
       this.n = index
-      console.log(data)
       // debugger
-      this.$store.commit('toggleFile', data)
+      this.$store.commit('toggleFile', optionFileData)
     }
   }
 }

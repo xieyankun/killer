@@ -34,17 +34,20 @@ export default{
           matchBrackets: true,
           autoCloseBrackets: true,
           tabSize: 4,
-          mode: 'text/html',
+          // mode: 'text/html',
           line: true
         }
       }
+    },
+    editorData: {
+      type: Object
     },
     editorContent: {
       type: String,
       default: function() {
         return ''
       }
-    },
+    }
   },
   data() {
     return {
@@ -56,17 +59,18 @@ export default{
   computed: {
     toggleFile: function() {
       return this.$store.state.toggleFile
-    },
-    // selectFileCode: function() {
-    //   let code = this.$store.state.selectFileCode
-    //   this.editor.setValue(code)
-    //   console.log('code,--', code)
-    //   return code
-    // }
+    }
   },
   watch: {
+    editorData() {
+      console.log(this.editorData)
+      this.editor.setOption("mode", this.editorData.type);
+      this.editor.setValue(this.editorData.code)
+    },
     editorContent() {
-      this.editor.setValue(this.editorContent)
+      console.log(this.editorContent)
+      // this.editor.setOption("mode", 'text/css');
+      // this.editor.setValue(this.editorContent)
     },
     toggleFile() {
     }

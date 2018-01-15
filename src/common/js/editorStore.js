@@ -5,18 +5,24 @@ const FILE_KEY = 'FILE'
 
 const initFileData = [
   {
+    path: '/index.html',
     name: 'index.html',
-    code: 'index.html',
+    type: 'text/html',
+    code: '',
     children: []
   },
   {
+    path: '/mian.css',
     name: 'mian.css',
-    code: 'mian.css',
+    type: 'text/css',
+    code: '',
     children: []
   },
   {
+    path: '/main.js',
     name: 'main.js',
-    code: 'main.js',
+    type: 'text/javascript',
+    code: '',
     children: []
   }
 ]
@@ -30,6 +36,12 @@ export let loadFileData = function () {
     console.error(e)
     return initFileData
   }
+}
+
+// 获取选中的文件数据
+export let loadOptData = () => {
+  let data = {}
+  return data
 }
 
 let saveLocalData = function (key, data) {

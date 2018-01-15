@@ -1,17 +1,19 @@
 import {addCode, clearCode} from '@/common/js/editorStore'
+
 export default {
+  // 改变文件内容
   addAction(state, data) {
     console.log('data', data)
-    state.fileData = addCode(data)
+    state.allFileData = addCode(data)
+  },
+  // 切换目录
+  toggleFile(state, data) {
+    state.optionFileData = data
   },
   clearAction(state) {
     state.editorContent = clearCode()
   },
   isCompile(state) {
     // state.compile = !state.compile
-  },
-  toggleFile(state, data) {
-    state.selectFileCode = data.data.code
-    state.toggleFile = data.index
   }
 }
