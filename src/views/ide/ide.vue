@@ -26,10 +26,10 @@
 
 <script>
 /* eslint-disable */
-import ToolBox from '@/components/Toolbox/toolbox'
-import Tree from '@/components/Tree/tree'
-import Editor from '@/components/Editor/editor'
-import Browser from '@/components/Browser/browser'
+import ToolBox from '@/components/ToolBox/ToolBox'
+import Tree from '@/components/Tree/Tree'
+import Editor from '@/components/Editor/Editor'
+import Browser from '@/components/Browser/Browser'
 export default {
   components: {
     ToolBox,

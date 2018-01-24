@@ -1,5 +1,5 @@
 <template>
-  <div class="treeWrap">
+  <div class="treeWrap" ref="treeWrap" id="mouse">
     <p>目录</p>
     <ul class="tree">
       <!-- <item class="item" v-for="(item, index) in treeData" :key="new Date().getTime()" :indexData="index" :model="item" @toggle="selectItem">
@@ -11,6 +11,9 @@
         {{tree.name}}
       </li>
     </ul>
+    <div id="forRight">
+      <key-menu></key-menu>
+    </div>
   </div>
 
 </template>
@@ -19,18 +22,38 @@
 /* eslint-disable */
 import EventBus from '@/components/EventBus'
 import item from '@/base/kTree/index'
+import KeyMenu from '@/components/RightKeyMenu/RightKeyMenu'
 export default {
   components: {
-    item
+    item,
+    KeyMenu
   },
   data() {
     return {
-      n: 0
+      n: 0,
+      showMenu: false
     }
   },
   computed: {
   },
-  mounted () {
+  mounted() {
+    let treeWrap = this.$refs.treeWrap
+    var mouse = document.getElementById("mouse")
+    var forRight = document.getElementById("forRight")
+
+    mouse.oncontextmenu = function(event) {
+      var e = event||window.event
+      forRight.style.display = "block";
+      forRight.style.left = event.clientX + "px"; 
+      forRight.style.top = event.clientY - 36 + "px";  //鼠标的坐标啊
+      console.log('0000')
+      return false;   //这里返回false就是为了屏蔽默认事件
+    }
+
+    document.onclick = function(){
+      forRight.style.display="none"
+    }
+
   },
   computed: {
     treeData: function() {
@@ -72,5 +95,9 @@ ul {
   padding-left: 1em;
   line-height: 1.5em;
   list-style-type: dot;
+}
+#forRight{
+  display: none;
+  position: absolute;
 }
 </style>

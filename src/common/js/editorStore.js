@@ -44,6 +44,14 @@ export let loadOptData = () => {
   return data
 }
 
+// export let getOptFile = (index) => {
+//   let fileDataStr = localStorage.getItem(FILE_KEY)
+//   let fileDataObj = JSON.parse(fileDataStr)
+//   let optFileData = fileDataObj[index]
+//   console.log('optFileData', optFileData)
+//   return optFileData
+// }
+
 let saveLocalData = function (key, data) {
   localStorage.setItem(key, JSON.stringify(data))
 }

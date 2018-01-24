@@ -93,7 +93,7 @@ export default{
         console.log(this.$store.state.toggleFile)
       })
       // 初始化编辑器内容
-      this.editor.setValue(this.$store.state.fileData[0].code)
+      // this.editor.setValue(this.$store.state.optionFileData.code)
 
       this.editor.on('redo', (instance, changeObj) => {
         console.log('redo', instance)
